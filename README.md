@@ -1,5 +1,6 @@
 gotools
 =======
 
-Some experiments with go.  At this point I would classify everything
-as alpha quality.
+Some experiments with the go programming language.  
+
+At this point I would classify everything as alpha quality.
