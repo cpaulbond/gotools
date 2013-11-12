@@ -65,7 +65,18 @@ func (set *pointset) add(pt point) bool {
 	return true
 }
 
-func (set *pointset) random() (rtn point) {
+func (set *pointset) get() (rtn point) {
+	if set.len() == 0 {
+		panic("Can't find random point in empty pointset")
+	}
+
+	e := set.data.Front()
+	rtn = e.Value.(point)
+	set.data.Remove(e)
+	return
+}
+
+func (set *pointset) get_random() (rtn point) {
 	if set.len() == 0 {
 		panic("Can't find random point in empty pointset")
 	}
@@ -75,7 +86,9 @@ func (set *pointset) random() (rtn point) {
 		if n == 0 {
 			rtn = i.Value.(point)
 			set.data.Remove(i)
+			return
 		}
+		n--
 	}
 	return
 }

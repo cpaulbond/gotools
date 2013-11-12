@@ -36,7 +36,6 @@ func (m *Maze) clear() {
 }
 
 func (m *Maze) Carve() {
-
 	m.data[1][1].top = false
 	m.data[1][1].visited = true
 	m.data[m.rows-1][m.cols-2].top = false
@@ -59,14 +58,31 @@ func (m *Maze) Carve() {
 			}
 			run = 0
 
-			pt = backup.random()
+			pt = backup.get_random()
 			moves = m.get_moves(pt)
 		}
 
 		//       (let ((move (maze-select-random moves)))
+		move := moves.get_random()
 		//         (setq pt (maze-open-passage pt move maze))
+		pt = m.carve_passage(pt, move)
 		//         (maze-set-flag pt :visited maze))
+		m.data[pt.r][pt.c].visited = true
 	}
+}
+
+func (m *Maze) carve_passage(pt, move point) (new_pt point) {
+	new_pt = point{r: pt.r + move.r, c: pt.c + move.c}
+	if move.r == -1 && move.c == 0 {
+		m.data[pt.r][pt.c].top = false
+	} else if move.r == 1 && move.c == 0 {
+		m.data[new_pt.r][new_pt.c].top = false
+	} else if move.r == 0 && move.c == -1 {
+		m.data[new_pt.r][new_pt.c].right = false
+	} else if move.r == 0 && move.c == 1 {
+		m.data[pt.r][pt.c].right = false
+	}
+	return
 }
 
 func (m *Maze) get_moves(pt point) (rtn *pointset) {

@@ -16,3 +16,10 @@ func Test_get_moves(t *testing.T) {
 	m.data[2][1].visited = true
 	check_pointset_len(m.get_moves(point{r: 1, c: 1}), 0, t)
 }
+
+func Test_carve(t *testing.T) {
+	m := NewMaze(10, 10)
+	m.Carve()
+	m.Dump()
+	m.Print()
+}
