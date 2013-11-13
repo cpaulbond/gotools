@@ -1,4 +1,4 @@
-package bitset64
+package adt
 
 import (
 	"testing"
@@ -6,6 +6,13 @@ import (
 
 func Test_basic_testing(t *testing.T) {
 	var s Bitset64
+
+	s.Set(15)
+	if s.String() != "{1000000000000000}" {
+		t.Errorf("Unexpected output string %s\n", s.String())
+		return
+	}
+	s.Init()
 
 	for i := 0; i < 16; i++ {
 		if s.IsSet(i) {

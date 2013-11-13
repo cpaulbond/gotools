@@ -1,4 +1,6 @@
-package bitset64
+package adt
+
+import "fmt"
 
 type Bitset64 struct {
 	bits uint64
@@ -8,7 +10,11 @@ func (s *Bitset64) Init() {
 	s.bits = 0
 }
 
-func (s *Bitset64) Get() uint64 {
+func (s *Bitset64) String() string {
+	return fmt.Sprintf("%b", *s)
+}
+
+func (s *Bitset64) Raw() uint64 {
 	return s.bits
 }
 

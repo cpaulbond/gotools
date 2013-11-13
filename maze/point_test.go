@@ -53,7 +53,7 @@ func Test_pointset_get_random(t *testing.T) {
 			t.Error("Found invalid point") // Just for testing...
 		}
 
-		t.Log(pt)
+		//t.Log(pt)
 	}
 
 	check_pointset_len(set, 0, t)
