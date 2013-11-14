@@ -52,7 +52,6 @@ func Test_pointset_get_random(t *testing.T) {
 		if pt.r == -1 {
 			t.Error("Found invalid point") // Just for testing...
 		}
-
 		//t.Log(pt)
 	}
 
