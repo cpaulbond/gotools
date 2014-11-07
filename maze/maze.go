@@ -36,7 +36,7 @@ func (m *Maze) is_set(r, c int, bit int) bool {
 func (m *Maze) decode(r, c int) string {
 	chr := []byte{'e', 't', 'r', 'v', 's', 'X'}
 
-	val := make([]byte, 6)
+	val := make([]byte, len(chr))
 
 	for i := 0; i <= mark; i++ {
 		if m.data[r][c].IsSet(i) {
@@ -188,14 +188,14 @@ func (m *Maze) carve_passage(pt, move point) (new_pt point) {
 	return
 }
 
-func (m *Maze) get_moves(pt point) (rtn *pointset) {
-	moves := [4]point{
-		{r: -1, c: 0},
-		{r: 1, c: 0},
-		{r: 0, c: -1},
-		{r: 0, c: 1},
-	}
+var moves = [4]point{
+	{r: -1, c: 0},
+	{r: 1, c: 0},
+	{r: 0, c: -1},
+	{r: 0, c: 1},
+}
 
+func (m *Maze) get_moves(pt point) (rtn *pointset) {
 	rtn = new_pointset()
 
 	for i := range moves {

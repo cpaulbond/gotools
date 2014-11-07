@@ -1,11 +1,11 @@
-all: $(GOPATH)/bin/maze
+all: 
 	go fmt
 	go test
 	go vet
-	go build -o $(GOPATH)/bin/maze cli/main.go
+	go build -o ${GOBIN}/maze cli/main.go
 
 clean:
-	rm -f *~
+	rm -f *~ *.test
 
 demo:
 	echo done
